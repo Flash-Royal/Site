@@ -18,6 +18,12 @@ class Game(models.Model):
     description = models.TextField(max_length = 1000, help_text = "Description about game")
     gameGenre = models.ForeignKey('GameGenre', on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+            return str(self.name)
+
 class GameImages(models.Model):
     nameGame = models.ForeignKey('Game', on_delete=models.SET_NULL, null=True)
-    image = ImageField(upload_to = 'games\{0}'.format(nameGame))
+    image = models.ImageField(upload_to = 'games\{0}'.format(nameGame))
+
+    def __str__(self):
+            return self.nameGame
