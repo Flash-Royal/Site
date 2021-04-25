@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from django.contrib.contenttypes.fields import GenericForeignKey
 # Create your models here.
 class GameGenre(models.Model):
     idName = models.CharField(max_length = 100, help_text = "Enter Game Genre url id")
@@ -22,8 +22,8 @@ class Game(models.Model):
             return str(self.name)
 
 class GameImages(models.Model):
-    nameGame = models.ForeignKey('Game', on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(upload_to = 'games\{0}'.format(nameGame))
+    nameGame = models.ForeignKey('Game', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to = 'games')
 
     def __str__(self):
-            return self.nameGame
+            return str(self.nameGame)
