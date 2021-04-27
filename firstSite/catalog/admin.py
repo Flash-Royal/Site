@@ -3,7 +3,7 @@ from .models import GameGenre, GameImages, Game
 # Register your models here.
 @admin.register(GameGenre)
 class GameGenreAdmin(admin.ModelAdmin):
-    list_display = ('idName', 'name', 'description')
+    list_display = ('idName', 'name', 'description', 'gameList')
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
@@ -11,4 +11,4 @@ class GameAdmin(admin.ModelAdmin):
 
 @admin.register(GameImages)
 class GameImagesAdmin(admin.ModelAdmin):
-    list_display = ('nameGame', 'image')
+    list_display = ('imageGenre', 'nameGame', 'image')

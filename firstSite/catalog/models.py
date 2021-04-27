@@ -10,6 +10,10 @@ class GameGenre(models.Model):
     def getLink(self):
         return reverse('GenreDetail', args = [str(self.idName)])
 
+    def gameList(self):
+        selfGames = Game.objects.filter(gameGenre__name = self.name)
+        return ','.join([game.name for game in selfGames])
+
     def __str__(self):
             return self.idName
 
@@ -27,3 +31,7 @@ class GameImages(models.Model):
 
     def __str__(self):
             return str(self.nameGame)
+
+    def imageGenre(self):
+        selfImages = Game.objects.filter(name = self.nameGame)
+        return ','.join([game.gameGenre.name for game in selfImages])
