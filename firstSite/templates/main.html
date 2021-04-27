@@ -10,5 +10,23 @@
 </head>
 
 <body>
-
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Выберите жанр
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {%for genre in gameGenres%}
+      <a class="dropdown-item" href='#'>{{genre.name}}</a>
+      {%endfor%}
+    </div>
+  </div>
+  {%for genre in gameGenres%}
+  <div class = "container-fluid">
+    <h3>{{genre.name}}</h3>
+    <h5>{{genre.description}}</h5>
+    {%for image in images%}
+    <img src='/{{image.image}}' class="img-fluid" alt="Responsive image">
+    {%endfor%}
+  </div>
+  {%endfor%}
 </body>

@@ -20,10 +20,10 @@ class Main(APIView):
         gameGenre = GameGenre.objects.all()
         gameImages = GameImages.objects.all()
         for i in gameGenre:
-            game[i] = Game.objects.values('id', 'name').filter(gameGenre = i)[0]
+            game[i] = Game.objects.values('id', 'name', 'gameGenre').filter(gameGenre = i)[0]
         for i in game.values():
-            image[i['name']] = GameImages.objects.values('image').filter(nameGame = i['id'])
+            image[i['gameGenre']] = GameImages.objects.values('image').filter(nameGame = i['id'])
         print(image)
-        return Response({'images' : image})
+        return Response({'gameGenres' : gameGenre, 'images' : gameImages})
 
 # Create your views here.
