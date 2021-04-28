@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{%block genre%}
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+    {%for genre in gameGenres%}
+    <li class="nav-item">
+      <a class="nav-link" href= "#"> {{genre.name}} </a>
+    </li>
+    {%endfor%}
+  </ul>
+</div>
+{%endblock%}

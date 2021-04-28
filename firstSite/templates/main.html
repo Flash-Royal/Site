@@ -9,26 +9,80 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
-<body>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Выберите жанр
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<nav class="navbar navbar-expand-sm navbar-light">
+  <a class="navbar-brand" href= {% url 'main' %}>Главная</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {%block genre%}
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
       {%for genre in gameGenres%}
-      <a class="dropdown-item" href='#'>{{genre.name}}</a>
+      <li class="nav-item">
+        <a class="nav-link" href= "#"> {{genre.name}} </a>
+      </li>
+      {%endfor%}
+    </ul>
+  </div>
+  {%endblock%}
+</nav>
+
+<body>
+  {%block content%}
+  <div class="row justify-content-md-center">
+    {%for genre in gameGenres%}
+    <div class="col-md-auto">
+      {%for image in images%}
+      {%if image.imageGenre == genre.name%}
+      <div class = img_container>
+        <img src='/{{image.image}}' class="img-fluid" alt="Responsive image" width = "400" height="500">
+        <div class = img_desc>
+          <div class = "container-fluid">
+            <h3>{{genre.name}}</h3>
+            <h5>{{genre.description}}</h5>
+          </div>
+        </div>
+      </div>
+      {%endif%}
       {%endfor%}
     </div>
-  </div>
-  {%for genre in gameGenres%}
-  <div class = "container-fluid">
-    <h3>{{genre.name}}</h3>
-    <h5>{{genre.description}}</h5>
-    {%for image in images%}
-    {%if image.imageGenre == genre.name%}
-    <img src='/{{image.image}}' class="img-fluid" alt="Responsive image">
-    {%endif%}
     {%endfor%}
   </div>
-  {%endfor%}
+  {%endblock%}
 </body>
+
+<style>
+  body {
+    background-color: #9198e5;
+  }
+
+  .navbar {
+  background-color: #80c8ff;
+  padding: 0px;
+  border: 0px;
+  }
+
+  .navbar-brand {
+  padding: 0px;
+  }
+
+  .img_container {
+    position: relative;
+    margin: 20px auto 30px auto;
+  }
+  .img_container>img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 0 6px #9E9E9E;
+    border: 4px solid #fff;
+  }
+  .img_desc {
+    position: absolute;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>
