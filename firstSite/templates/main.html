@@ -25,7 +25,9 @@
     <h3>{{genre.name}}</h3>
     <h5>{{genre.description}}</h5>
     {%for image in images%}
+    {%if image.imageGenre == genre.name%}
     <img src='/{{image.image}}' class="img-fluid" alt="Responsive image">
+    {%endif%}
     {%endfor%}
   </div>
   {%endfor%}

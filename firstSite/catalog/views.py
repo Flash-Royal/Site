@@ -16,15 +16,17 @@ class Main(APIView):
 
     def get(self, request):
         game = {}
-        image = {}
+        image = []
         gameGenre = GameGenre.objects.all()
-        gameImages = GameImages.objects.all()
+        gameImages = GameImages.objects.order_by().distinct()
         for i in gameGenre:
             game[i] = Game.objects.values('id', 'name', 'gameGenre').filter(gameGenre = i)[0]
         for i in game.values():
-            image[i['gameGenre']] = GameImages.objects.values('image').filter(nameGame = i['id'])
-        gameGenre.union(gameImages)
-        print(gameGenre)
-        return Response({'gameGenres' : gameGenre, 'images' : gameImages})
+            if not image:
+                image = GameImages.objects.filter(nameGame = i['id'])
+            else:
+                image = image | GameImages.objects.filter(nameGame = i['id'])
+        print(image)
+        return Response({'gameGenres' : gameGenre, 'images' : image})
 
 # Create your views here.
