@@ -23,10 +23,21 @@ class Main(APIView):
             game[i] = Game.objects.values('id', 'name', 'gameGenre').filter(gameGenre = i)[0]
         for i in game.values():
             if not image:
-                image = GameImages.objects.filter(nameGame = i['id'])
+                imageBuf = GameImages.objects.filter(nameGame = i['id']).values()[0]
+                image = GameImages.objects.filter(id = imageBuf['id'])
             else:
-                image = image | GameImages.objects.filter(nameGame = i['id'])
-        print(image)
+                imageBuf = GameImages.objects.filter(nameGame = i['id']).values()[0]
+                image = image | GameImages.objects.filter(id = imageBuf['id'])
         return Response({'gameGenres' : gameGenre, 'images' : image})
 
+class GenreDetail(APIView):
+    renderer_classes = [MultiPartParser,TemplateHTMLRenderer]
+    template_name = 'gameGenreTemplate.html'
+
+    def get(self, request, genre):
+        gameGenre = GameGenre.objects.all()
+        genreName = GameGenre.objects.values('id', 'name','description').get(idName = genre)
+        games = Game.objects.filter(gameGenre = genreName['id'])
+        images = GameImages.objects.all()
+        return Response({'genreName' : genreName, 'games' : games, 'gameGenres' : gameGenre, 'images' : images})
 # Create your views here.

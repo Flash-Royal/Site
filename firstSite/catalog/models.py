@@ -35,3 +35,7 @@ class GameImages(models.Model):
     def imageGenre(self):
         selfImages = Game.objects.filter(name = self.nameGame)
         return ','.join([game.gameGenre.name for game in selfImages])
+
+    def imageGame(self):
+        selfImages = Game.objects.filter(name = self.nameGame)
+        return ','.join([game.name for game in selfImages])

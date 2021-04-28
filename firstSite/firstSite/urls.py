@@ -23,7 +23,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/', views.Main.as_view(), name='main')
+    path('main/', views.Main.as_view(), name='main'),
+    re_path('main/(?P<genre>\w+)/$', views.GenreDetail.as_view(), name = 'GenreDetail')
 ]
 
 
