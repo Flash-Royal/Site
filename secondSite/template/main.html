@@ -18,11 +18,16 @@
           <a class = "navbar-brand" href = {% url 'main'%}>
             <img src = "{%static 'logo.png'%}" width = "110" height = "68">
           </a>
+          <div class = "social net">
+            <a href="http:\\vk.com"><img src="{%static 'vk-social-logotype.svg'%}" width = "28" height = "28"></a>
+            <a href="http:\\instagram.com"><img src="{%static 'instagram.svg'%}" width = "28" height = "28"></a>
+            <a href="http:\\youtube.com"><img src="{%static 'youtube.svg'%}" width = "28" height = "28"></a>
+          </div>
           <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+              <ul class="navbar-nav .align-items-end mr-auto mt-2 mt-lg-0 ">
                 {%for item in furn%}
                 <li class="nav-item">
                   <a class="nav-link" href= {{item.getLink}}> {{item.name}} </a>
@@ -30,7 +35,9 @@
                 {%endfor%}
               </ul>
           </div>
+
         </nav>
+
       </div>
       <div class = 'names' style= "margin: 70px 20px;">
         <h1 style="color:#ffffff"> Мебель лофт </h1>
@@ -60,8 +67,9 @@
       color: white;
       font: bolt 24px Helvetica;
     }
-    .n1{
+    .n1 {
       margin-top: 30px;
     }
+
   </style>
 </html>
