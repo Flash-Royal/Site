@@ -45,6 +45,17 @@
         <h6 class = "n1"> для дома | офиса | кафе и ресторана | улицы </h6>
       </div>
     </div>
+    <div class = grid-container>
+      <div class = item1>
+        <img src = {%static '1.jpg'%} width = "200" height="300">
+      </div>
+      <div class = item2>
+        <img src = {%static '2.jpg'%} width = "200" height="300">
+      </div>
+      <div class = item3>
+        <img src = {%static '3.jpg'%} width = "400" height="300">
+      </div>
+    </div>
   </body>
 
   <style>
@@ -71,5 +82,18 @@
       margin-top: 30px;
     }
 
+    .grid-container {
+      max-width: 500;
+      margin: 10px auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: 300px;
+      grid-auto-flow: dense;
+    }
+    .item3 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
   </style>
 </html>
