@@ -3,7 +3,7 @@ from .models import Furniture, Images
 
 @admin.register(Furniture)
 class FurnitureDisplay(admin.ModelAdmin):
-    list_display = ('name', 'idName', 'imagesFurniture')
+    list_display = ('name', 'idName', 'imageBack', 'imagesFurniture')
 
 @admin.register(Images)
 class ImagesDisplay(admin.ModelAdmin):

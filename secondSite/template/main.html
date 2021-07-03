@@ -47,12 +47,25 @@
     </div>
     <div class = grid-container>
       <div class = item1>
+        <div class = 'test'> Name1 </div>
         <img src = {%static '1.jpg'%} width = "200" height="300">
       </div>
+      {%for item in furn%}
+      <div class = "{{item.idName}}">
+        <div class = "test"> {{item.name}} </div>
+        {%if item.idName == "svetilnik"%}
+          <img src = '/{{item.imageBack}}' width = 100% height = 100%>
+        {%else%}
+          <img src = '/{{item.imageBack}}' width = "200" height = "300">
+        {%endif%}
+        </div>
+      {%endfor%}
       <div class = item2>
-        <img src = {%static '2.jpg'%} width = "200" height="300">
+        <div class = 'test'> Name2 </div>
+        <img src = {%static '2.jpg'%} width = 100% height="300">
       </div>
       <div class = item3>
+        <div class = 'test'> Name3 </div>
         <img src = {%static '3.jpg'%} width = "400" height="300">
       </div>
     </div>
@@ -83,17 +96,26 @@
     }
 
     .grid-container {
-      max-width: 500;
+      max-width: 200;
+      max-height: 300;
       margin: 10px auto;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
+      grid-gap: 40px;
       grid-auto-rows: 300px;
       grid-auto-flow: dense;
     }
-    .item3 {
-      grid-column: span 2;
-      grid-row: span 1;
+
+    .test {
+      margin-bottom: 10px;
     }
+
+    .svetilnik {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+
+
   </style>
 </html>

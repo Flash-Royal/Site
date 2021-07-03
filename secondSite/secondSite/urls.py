@@ -26,3 +26,6 @@ urlpatterns = [
     path('main/', views.Main.as_view(), name = 'main'),
     re_path('main/(?P<furniture>\w+)/$', views.FurnitureDetail.as_view(), name = 'FurnitureDetail')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_DIRS)
+urlpatterns += staticfiles_urlpatterns()
