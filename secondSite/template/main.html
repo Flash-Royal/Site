@@ -18,14 +18,14 @@
           <a class = "navbar-brand" href = {% url 'main'%}>
             <img src = "{%static 'logo.png'%}" width = "110" height = "68">
           </a>
-          <div class = "social net">
+          <div class = "fl">
             <a href="http:\\vk.com"><img src="{%static 'vk-social-logotype.svg'%}" width = "28" height = "28"></a>
             <a href="http:\\instagram.com"><img src="{%static 'instagram.svg'%}" width = "28" height = "28"></a>
             <a href="http:\\youtube.com"><img src="{%static 'youtube.svg'%}" width = "28" height = "28"></a>
+            <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
-          <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
               <ul class="navbar-nav .align-items-end mr-auto mt-2 mt-lg-0 ">
                 {%for item in furn%}
@@ -63,15 +63,19 @@
     .background {
       width: 100%;
       height: 100%;
-       }
+      }
+
     .foto {
       position: relative;
     }
+
     .menu {
       position: absolute;
-      top: 0px;
-      left: 0px;
+      width: 100%;
+      top: 0%;
+      left: 0%;
     }
+
     .names {
       position: absolute;
       top: 10%;
@@ -79,6 +83,7 @@
       color: white;
       font: bolt 24px Helvetica;
     }
+
     .n1 {
       margin-top: 30px;
     }
@@ -94,6 +99,9 @@
       grid-auto-flow: dense;
     }
 
+    .socialnet {
+      margin-left: 10px;
+    }
     .test {
       margin-bottom: 10px;
     }
