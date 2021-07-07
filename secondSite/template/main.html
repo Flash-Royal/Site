@@ -45,18 +45,18 @@
         <h6 class = "n1"> для дома | офиса | кафе и ресторана | улицы </h6>
       </div>
     </div>
-    {%for item in furn%}
-    <div class = "col-sm-auto">
-      <div class = "card border-info">
-        <div class = "card-body">
-          <div>
-            <a href = "{{item.getLink}}"> {{item.name}} </a>
-          </div>
+    <div class="row">
+      {%for item in furn%}
+      <div class = "col-auto">
+        <div>
+          <a href = "{{item.getLink}}"> {{item.name}} </a>
+        </div>
+        <div class = "im">
           <img src = "/{{item.imageBack}}">
         </div>
       </div>
+      {%endfor%}
     </div>
-    {%endfor%}
   </body>
 
   <style>
@@ -88,30 +88,27 @@
       margin-top: 30px;
     }
 
-    .grid-container {
-      grid-area: auto;
-      max-width: 200;
-      max-height: 300;
-      margin: 10px auto;
-      display: grid;
-      grid-template-columns: 200px minmax(200px, 300px);
-      grid-gap: 40px;
-      grid-auto-flow: dense;
+    .row {
+      width: 100%;
     }
 
     .socialnet {
       margin-left: 10px;
     }
+
     .test {
       margin-bottom: 10px;
     }
 
-    .svetilnik {
-      grid-column: span 1;
-      grid-row: span 2;
+    .row {
+      background: #262626;
+      width: auto;
     }
 
-
+    .im {
+      max-width: auto;
+      height: auto;
+    }
 
   </style>
 </html>
