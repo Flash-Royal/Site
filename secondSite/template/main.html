@@ -53,7 +53,7 @@
             <a class = "link" href = "{{item.getLink}}"> {{item.name}} </a>
           </div>
           <div class = "im">
-            <a class = "link" href = "{{item.getLink}}"><img src = "/{{item.imageBack}}"></a>
+            <a class = "imlink" href = "{{item.getLink}}"><img src = "/{{item.imageBack}}"></a>
           </div>
         </div>
         {%endfor%}
@@ -98,6 +98,8 @@
       color: white;
       margin-left: 10px;
       margin-top: 10px;
+      align-items: center;
+      justify-content: center;
     }
 
     .link:hover {
@@ -118,15 +120,17 @@
     .grid {
       display: grid;
       grid-gap: 1px;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-rows: repeat(auto-fit, minmax(200px, 1fr))
     }
     .grid > div {
       background: #262626;
     }
-    .im {
-      max-width: auto;
+    .grid img {
+      width: auto;
       height: auto;
-      margin-left: 10px;
+      align-items: center;
+      justify-content: center;
     }
 
     .text {
@@ -145,11 +149,57 @@
     .text > h5 {
       margin-left: 10px;
     }
+    .svetilnik {
+      order: 1;
+    }
+
+    .svetilnik img {
+      width: 100%;
+    }
+    .chair {
+      order: 2;
+    }
+
+    .taburet {
+      order: 4;
+    }
+
+    .cafeTable {
+      order: 5;
+    }
 
     .stelazh {
       grid-row: span 2;
       order: 6;
+      width: auto;
+      height: auto;
     }
 
+    .table img {
+      width: 100%;
+    }
+
+    .table {
+      order: 7;
+      height: 100%;
+    }
+
+    .sofa {
+      order: 8
+    }
+
+    .decor {
+      order: 9;
+      width: auto;
+      height: auto;
+    }
+
+    .bed {
+      order: 10;
+    }
+
+    .cafeFurn {
+      order: 11;
+    }
   </style>
 </html>
