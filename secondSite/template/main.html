@@ -45,9 +45,9 @@
         <h6 class = "n1"> для дома | офиса | кафе и ресторана | улицы </h6>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       {%for item in furn%}
-      <div class = "col-auto">
+      <div class = "{{item.idName}}">
         <div>
           <a class = "link" href = "{{item.getLink}}"> {{item.name}} </a>
         </div>
@@ -56,6 +56,9 @@
         </div>
       </div>
       {%endfor%}
+      <div class = "text">
+         <h5> Мебель лофт — это простота и функциональность. Мы соединяем надежность металла, тепло дерева, открытость стекла, и мягкость натуральных тканей. Несмотря на брутальность, стиль лофт — это стиль элиты. </h5>
+      </div>
     </div>
   </body>
 
@@ -88,10 +91,6 @@
       margin-top: 30px;
     }
 
-    .row {
-      width: 100%;
-    }
-
     .link {
       text-decoration: none;
       color: white;
@@ -110,14 +109,23 @@
       margin-bottom: 10px;
     }
 
-    .row {
+    .grid {
       background: #262626;
       width: auto;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
     .im {
       max-width: auto;
       height: auto;
+    }
+
+    .text {
+      color: white;
+      align-self: center;
+      justify-self: center;
     }
 
   </style>
