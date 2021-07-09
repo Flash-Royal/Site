@@ -45,19 +45,21 @@
         <h6 class = "n1"> для дома | офиса | кафе и ресторана | улицы </h6>
       </div>
     </div>
-    <div class="grid">
-      {%for item in furn%}
-      <div class = "{{item.idName}}">
-        <div>
-          <a class = "link" href = "{{item.getLink}}"> {{item.name}} </a>
+    <div class = "back">
+      <div class="grid">
+        {%for item in furn%}
+        <div class = "{{item.idName}}">
+          <div>
+            <a class = "link" href = "{{item.getLink}}"> {{item.name}} </a>
+          </div>
+          <div class = "im">
+            <a class = "link" href = "{{item.getLink}}"><img src = "/{{item.imageBack}}"></a>
+          </div>
         </div>
-        <div class = "im">
-          <img src = "/{{item.imageBack}}">
+        {%endfor%}
+        <div class = "text">
+           <h5> Мебель лофт — это простота и функциональность. Мы соединяем надежность металла, тепло дерева, открытость стекла, и мягкость натуральных тканей. Несмотря на брутальность, стиль лофт — это стиль элиты. </h5>
         </div>
-      </div>
-      {%endfor%}
-      <div class = "text">
-         <h5> Мебель лофт — это простота и функциональность. Мы соединяем надежность металла, тепло дерева, открытость стекла, и мягкость натуральных тканей. Несмотря на брутальность, стиль лофт — это стиль элиты. </h5>
       </div>
     </div>
   </body>
@@ -94,6 +96,8 @@
     .link {
       text-decoration: none;
       color: white;
+      margin-left: 10px;
+      margin-top: 10px;
     }
 
     .link:hover {
@@ -108,24 +112,43 @@
     .test {
       margin-bottom: 10px;
     }
-
+    .back {
+      background: #565656;
+    }
     .grid {
-      background: #262626;
-      width: auto;
       display: grid;
-      grid-gap: 10px;
+      grid-gap: 1px;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
-
+    .grid > div {
+      background: #262626;
+    }
     .im {
       max-width: auto;
       height: auto;
+      margin-left: 10px;
     }
 
     .text {
       color: white;
-      align-self: center;
-      justify-self: center;
+      width: 100%;
+      height: 100%;
+      order: 3;
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text > h5 {
+      margin-left: 10px;
+    }
+
+    .stelazh {
+      grid-row: span 2;
+      order: 6;
     }
 
   </style>
