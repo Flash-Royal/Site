@@ -26,19 +26,18 @@
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-              <ul class="navbar-nav .align-items-end mr-auto mt-2 mt-lg-0 ">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav">
                 {%for item in furn%}
                 <li class="nav-item">
-                  <a class="nav-link" href= {{item.getLink}}> {{item.name}} </a>
+                  <a class="nav-link" href= {{item.getLink}} style = "color:white;"> {{item.name}} </a>
                 </li>
                 {%endfor%}
               </ul>
           </div>
-
         </nav>
-
       </div>
+
       <div class = 'names' style= "margin: 70px 20px;">
         <h1 style="color:#ffffff"> Мебель лофт </h1>
         <h5> на заказ в Нижнем Новгороде </h5>
@@ -46,7 +45,7 @@
       </div>
     </div>
     <div class = "back">
-      <div class="grid">
+      <div class = "grid">
         {%for item in furn%}
         <div class = "{{item.idName}}">
           <div>
@@ -61,6 +60,30 @@
            <h5> Мебель лофт — это простота и функциональность. Мы соединяем надежность металла, тепло дерева, открытость стекла, и мягкость натуральных тканей. Несмотря на брутальность, стиль лофт — это стиль элиты. </h5>
         </div>
       </div>
+    </div>
+    <div class = "desc">
+      <div class = "bold">
+        <h1>
+          <pre>
+Мы готовы воплотить
+вашу мечту
+в реальность!
+          </pre>
+        </h1>
+      </div>
+      <div>
+        <h5>
+          <pre>
+Мебель в стиле лофт благодаря ручному
+производству каждого элемента интерьера,
+обладает индивидуальностью и
+неповторимостью. Несмотря на простоту,
+эта мебель отражает харизму владельца,
+подчеркивая открытый и сильный характер.
+          </pre>
+        </h5>
+      </div>
+      <div class = "imLoft"> <img src = "{%static "loft-world.webp"%}"> </div>
     </div>
   </body>
 
@@ -114,20 +137,25 @@
     .test {
       margin-bottom: 10px;
     }
+
     .back {
       background: #565656;
     }
+
     .grid {
+      margin-bottom: 50px;
       display: grid;
       grid-gap: 1px;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      grid-template-rows: repeat(auto-fit, minmax(200px, 1fr))
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-rows: repeat(auto-fit, minmax(100px, 1fr))
     }
+
     .grid > div {
       background: #262626;
     }
+
     .grid img {
-      width: auto;
+      width: 100%;
       height: auto;
       align-items: center;
       justify-content: center;
@@ -149,13 +177,11 @@
     .text > h5 {
       margin-left: 10px;
     }
+
     .svetilnik {
       order: 1;
     }
 
-    .svetilnik img {
-      width: 100%;
-    }
     .chair {
       order: 2;
     }
@@ -175,23 +201,17 @@
       height: auto;
     }
 
-    .table img {
-      width: 100%;
-    }
-
     .table {
       order: 7;
       height: 100%;
     }
 
     .sofa {
-      order: 8
+      order: 9;
     }
 
     .decor {
-      order: 9;
-      width: auto;
-      height: auto;
+      order: 8;
     }
 
     .bed {
@@ -200,6 +220,27 @@
 
     .cafeFurn {
       order: 11;
+    }
+
+    .desc {
+      display: grid;
+      grid-gap: 1px;
+      grid-template-columns: 1fr;
+    }
+
+    .desc > div {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bold > h1 {
+      font-weight: bold;
+    }
+
+    .navbar-collapse {
+      text-align: right;
     }
   </style>
 </html>
