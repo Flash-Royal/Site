@@ -120,7 +120,6 @@
             <img src = "{%static "6.jpg"%}">
           </div>
         </div>
-
         <div class = "foots" style="background: white;">
           <div class = "texts">
             <h3 style="font-weight: bold; color: black;"> Подставка для обуви в прихожей в стиле лофт </h3>
@@ -136,6 +135,35 @@
           </div>
           <div>
             <img src = "{%static "podstavka-obuv3.jpg"%}">
+          </div>
+        </div>
+        <div class = "cafe" style="background: white;">
+          <div class = "texts">
+            <h3 style="font-weight: bold; color: black;"> Чайный столик в стиле loft </h3>
+            <h4 style="color: black;"> Пример минималистичного дизайна и естественной красоты. На нём будет удобно и поработать за ноутбуком и выпить чая с гостями. Несмотря на брутальность, чайный столик очень теплый и уютный элемент мебели. </h4>
+          </div>
+          <div class = "im2">
+            <img src = "{%static "chayniy-stol.jpg"%}">
+          </div>
+        </div>
+        <div class = "cafe2">
+          <div>
+            <img src = "{%static "chayniy-stol2.webp"%}">
+          </div>
+          <div>
+            <img src = "{%static "chayniy-stol3.webp"%}">
+          </div>
+        </div>
+        <div class = "tumba" style="background: white;">
+          <div class = "texts">
+            <h3 style="font-weight: bold; color: black;"> Тумба с двумя полками и выдвижным ящиком. </h3>
+            <h4 style="color: black;"> Интересное решение увеличения рабочего пространства для маленькой кухни. Светильник также ручной работы, изготовлен бонусом к представленной тумбе. </h4>
+          </div>
+          <div class = "im2">
+            <img src = "{%static "tumba.jpg"%}">
+          </div>
+          <div class = "im2">
+            <img src = "{%static "tumba2.jpg"%}">
           </div>
         </div>
       </div>
@@ -462,6 +490,40 @@
       align-items: center;
       justify-content: center;
     }
+
+    .cafe {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .cafe img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cafe2 {
+      color: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      margin-bottom: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cafe2 img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
     .texts {
       background: white;
       width: 100%;
@@ -479,8 +541,9 @@
       justify-content: center;
     }
 
-    .carousel-inner {
-      width: 100%;
+    .carousel-inner img {
+      width: auto;
+      height: auto;
     }
 
     .chairs {
