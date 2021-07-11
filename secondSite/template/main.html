@@ -85,12 +85,64 @@
       <div class = "imLoft"> <img src = "{%static "loft-world.webp"%}"> </div>
     </div>
     <div class = "back2">
-      <div class = "grid2">
-        FurnitureDisplay
+      <div class = "paddingback">
+        <div class = "works">
+          <h1 style="color: white;"> Наши Работы </h1>
+        </div>
+        <div class = "bar" style="background: white;">
+          <div class = "texts">
+            <h3 style="font-weight: bold; color: black;"> Барная стойка и 4 цветочницы </h3>
+            <h4 style="color: black;"> заняли почетное место в интерьерах офиса одной очень крупной компании. </h4>
+          </div>
+          <div class = "im2">
+            <img src = "{%static "01.webp"%}">
+          </div>
+        </div>
+        <div class = "grid2">
+          <div>
+            <img src = "{%static "02.webp"%}">
+          </div>
+          <div>
+            <img src = "{%static "03.webp"%}">
+          </div>
+        </div>
+        <div class = "chairs">
+          <div class = "chText">
+            <h3> Делаем аккуратно, с точностью до миллиметра </h3>
+          </div>
+          <div>
+            <img src = "{%static "5.jpg"%}">
+          </div>
+          <div>
+            <img src = "{%static "4.jpg"%}">
+          </div>
+          <div>
+            <img src = "{%static "6.jpg"%}">
+          </div>
+        </div>
+
+        <div class = "foots" style="background: white;">
+          <div class = "texts">
+            <h3 style="font-weight: bold; color: black;"> Подставка для обуви в прихожей в стиле лофт </h3>
+            <h4 style="color: black;"> Металлические обувницы долговечны, универсальны и отлично «вписываются» в любой интерьер. Обувь можно удобно расставить в несколько рядов. Теперь на поиски необходимой пары не нужно тратить много времени. </h4>
+          </div>
+          <div class = "im2">
+            <img src = "{%static "podstavka-obuv.webp"%}">
+          </div>
+        </div>
+        <div class = "foots2">
+          <div>
+            <img src = "{%static "podstavka-obuv2.jpg"%}">
+          </div>
+          <div>
+            <img src = "{%static "podstavka-obuv3.jpg"%}">
+          </div>
+        </div>
       </div>
     </div>
-    <div class = "a2">
-      <div class = "carName" style="margin-bottom: 25px;">
+
+    <div class = "slide">
+      <div class = "carName" style="padding-bottom: 25px;">
         <h1 style = "font-weight: bold;"> Еще наши работы </h1>
       </div>
       <div id = "carousel" class = "carousel slide" data-ride="carousel">
@@ -160,16 +212,6 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <script>
-        $('.carousel-control.prev').click(function() {
-          $('#carousel').carousel('prev');
-        });
-
-        $('.carousel-control.next').click(function() {
-          $('#carousel').carousel('next');
-        });
-
-      </script>
     </div>
 
   </body>
@@ -229,6 +271,9 @@
       background: #565656;
     }
 
+    .imLoft {
+      padding-bottom: 100px;
+    }
     .grid {
       margin-bottom: 50px;
       display: grid;
@@ -330,14 +375,123 @@
       text-align: right;
     }
 
+    .slide {
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+
     .back2 {
-      width: 100%;
-      height: 100%;
       background: #262626;
+    }
+
+    .paddingback {
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 75px;
+      padding-bottom: 75px;
     }
 
     .grid2 {
       color: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      margin-bottom: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid2 img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .works {
+      width: 360px;
+      padding-bottom: 30px;
+    }
+
+    .bar img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .foots {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .foots img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .foots2 {
+      color: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      margin-bottom: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .foots2 img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+    .texts {
+      background: white;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      height: auto;
+    }
+
+    .chairs img {
+      width: 100%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-inner {
+      width: 100%;
+    }
+
+    .chairs {
+      padding-top: 36px;
+      color: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 18px;
     }
   </style>
 </html>
