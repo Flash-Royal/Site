@@ -19,12 +19,13 @@ class Main(APIView):
 
 class FurnitureDetail(APIView):
     renderer_classes = [MultiPartParser, TemplateHTMLRenderer]
-    template_name = 'furnitureTemple'
+    template_name = 'templeFurn.html'
 
     def get(self, request, furniture):
-        furn = Furniture.objects.get(idName = furniture)
-        images = Images.objects.filter(nameFurniture = furn['name'])
-        return Response({'furniture' : furn , "images" : images})
+        furns = Furniture.objects.all()
+        furn = Furniture.objects.values('id','name','idName').get(idName = furniture)
+        images = Images.objects.filter(nameFurniture = furn['id'])
+        return Response({'furns' : furns, 'furn' : furn, "images" : images})
 
 
 # Create your views here.
