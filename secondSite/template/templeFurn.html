@@ -27,12 +27,36 @@
             <ul class="navbar-nav">
               {%for item in furns%}
               <li class="nav-item">
-                <a class="nav-link" href= {{item.getLink}} style = "color:white;"> {{item.name}} </a>
+                <a class="nav-link" href= {{item.getLink}} style = "color:white;"> {{item.name}}_{{forloop.counter}} </a>
               </li>
               {%endfor%}
             </ul>
         </div>
       </nav>
+    </div>
+    <div class = "fotos">
+      <div class = "grid">
+        {%for item in images%}
+        {%if images|length|add:"-3" > forloop.counter%}
+        <div> {{furn.name}} в стиле Лофт</div>
+        <div>
+          <h1> {{forloop.counter}} </h1>
+          <img src = "/{{item.image}}">
+        </div>
+        {%endif%}
+        {%endfor%}
+      </div>
+      <div class = "grid2">
+        {%for item in images%}
+        {%if images|length|add:"-3" <= forloop.counter%}
+        <div>
+          <h1> {{forloop.counter}} </h1>
+          <img src = "/{{item.image}}">
+        </div>
+        {%endif%}
+        {%endfor%}
+      </div>
+
     </div>
   </body>
 
@@ -43,5 +67,9 @@
 
     .navbar-collapse {
       text-align: right;
+    }
+
+    .grid2 {
+      background: white;
     }
   </style>
