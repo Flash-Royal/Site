@@ -27,7 +27,7 @@
             <ul class="navbar-nav">
               {%for item in furns%}
               <li class="nav-item">
-                <a class="nav-link" href= {{item.getLink}} style = "color:white;"> {{item.name}}_{{forloop.counter}} </a>
+                <a class="nav-link" href= {{item.getLink}} style = "color:white;"> {{item.name}} </a>
               </li>
               {%endfor%}
             </ul>
@@ -38,47 +38,33 @@
       <div class = "grid">
         <div> {{furn.name}} в стиле лофт</div>
         {%for item in images%}
-        {%if images|length|add:"-3" > forloop.counter%}
+        {%if images|length|add:"-1" > forloop.counter%}
         <div id = "{{forloop.counter}}">
           <h1> {{forloop.counter}} </h1>
           <img src = "/{{item.image}}">
         </div>
         {%endif%}
         {%endfor%}
-        {%if furn.idName == "svetilnik"%}
-        <div class = "text1">
-          <h5> Есть бесконечное множество вариантов, как можно сделать светильник используя лишь металлический профиль: от простых прямоугольных форм до трапеций и окружностей. </h5>
-        </div>
-        <div class = "text2">
-          <h5> Для улицы, гаража или мастерской светильник можно сделать из двутавровой балки. Благодаря своей прочности он не боится случайных ударов и может служить долгие годы. </h5>
-        </div>
-        <div class = "text3">
-          <h5> Скрытые лампы и проводка — отличное решение для уличных светильников. А крепкий металлический профиль делает конструкцию антивандальной.  </h5>
-        </div>
-        <div class = "text4">
-          <h5> Круглый светильник в стиле «минимализм» создает равномерное освещение во все стороны, и выглядит изящно. Такой круг подойдет в любой интерьер, не стягивая на себя слишком много внимания. </h5>
-        </div>
+        {%for item in texts%}
+        {%if texts|length|add:"-1" > forloop.counter%}
+        <div class = text-{{forloop.counter}}> {{item.text}} </div>
         {%endif%}
+        {%endfor%}
       </div>
       <div class = "grid2">
         {%for item in images%}
-        {%if images|length|add:"-3" <= forloop.counter%}
-        <div id = "{{forloop.counter}}">
-          <h1> {{forloop.counter}} </h1>
+        {%if images|length|add:"-1" <= forloop.counter%}
+        <div class = "image-{{forloop.counter}}">
           <img src = "/{{item.image}}">
         </div>
         {%endif%}
         {%endfor%}
-        {%if furn.idName == "svetilnik"%}
-        <div class = "text5">
-          <h3> Простая лампа в стиле лофт, из металлического профиля отлично подойдет для сада, гаража или мастерской. </h3>
-        </div>
-        <div class = "text6">
-          <h5> Смелый контраст большого абажура и основания из тонких металлических труб дополняет сочетание открытости и большой устойчивости этого необычного торшера. </h5>
-        </div>
+        {%for item in texts%}
+        {%if texts|length|add:"-1" <= forloop.counter%}
+        <div class = text-{{forloop.counter}}> {{item.text}} </div>
         {%endif%}
+        {%endfor%}
       </div>
-
     </div>
   </body>
 

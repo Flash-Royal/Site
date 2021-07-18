@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Furniture, Images
+from .models import Furniture, Images, Texts
 
 @admin.register(Furniture)
 class FurnitureDisplay(admin.ModelAdmin):
@@ -8,4 +8,8 @@ class FurnitureDisplay(admin.ModelAdmin):
 @admin.register(Images)
 class ImagesDisplay(admin.ModelAdmin):
     list_display = ('nameFurniture', 'image')
+
+@admin.register(Texts)
+class TextsDisplay(admin.ModelAdmin):
+    list_display = ('nameFurniture', 'text')
 # Register your models here.

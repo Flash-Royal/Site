@@ -25,7 +25,8 @@ class FurnitureDetail(APIView):
         furns = Furniture.objects.all()
         furn = Furniture.objects.values('id','name','idName').get(idName = furniture)
         images = Images.objects.filter(nameFurniture = furn['id'])
-        return Response({'furns' : furns, 'furn' : furn, "images" : images})
+        texts = Texts.objects.filter(nameFurniture = furn['id'])
+        return Response({'furns' : furns, 'furn' : furn, "images" : images, 'texts' : texts})
 
 
 # Create your views here.

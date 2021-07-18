@@ -7,7 +7,7 @@ class Furniture(models.Model):
     idName = models.CharField(max_length = 100, help_text = "Enter furniture url id")
     name = models.CharField(max_length = 100, help_text = "Enter furniture name")
     imageBack = models.ImageField(upload_to = 'furniture')
-    
+
     def __str__(self):
         return str(self.name)
 
@@ -24,4 +24,8 @@ class Images(models.Model):
 
     def __str__(self):
             return str(self.nameFurniture)
+
+class Texts(models.Model):
+    nameFurniture = models.ForeignKey('Furniture', on_delete=models.CASCADE)
+    text = models.TextField()
 # Create your models here.
