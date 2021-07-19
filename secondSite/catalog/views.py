@@ -41,14 +41,12 @@ class FurnitureDetail(APIView):
                     grid1.append(list(mass)[i])
                 else:
                     grid2.append(list(mass)[i])
-
-        for id, item in enumerate(grid1):
-            item.newID = id
-
-        for id, item in enumerate(grid2):
-            item.newID = id
-
         return grid1, grid2
+
+    def addID(self, mass):
+        for id, item in enumerate(mass):
+            item.newID = id
+
     def get(self, request, furniture):
         arr = []
         furns = Furniture.objects.all()
@@ -56,6 +54,8 @@ class FurnitureDetail(APIView):
         images = Images.objects.filter(nameFurniture = furn['id'])
         texts = Texts.objects.filter(nameFurniture = furn['id'])
         grid1Images, grid2Images = self.parseData(images)
+        self.addID(grid1Images)
+        self.addID(grid2Images)
         grid1Texts, grid2Texts = self.parseData(texts)
 
         return Response({'furns' : furns, 'furn' : furn, 'gr1Text' : grid1Texts, 'gr2Text' : grid2Texts, 'gr1Im' : grid1Images, 'gr2Im' : grid2Images})
