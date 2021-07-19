@@ -36,32 +36,33 @@
     </div>
     <div class = "fotos">
       <div class = "grid">
-        <div> {{furn.name}} в стиле лофт</div>
+        <div class = "name"> <h1 style = "font-weight: bold;"> {{furn.name}} в стиле лофт </h1></div>
         {%for item in images%}
         {%if images|length|add:"-1" > forloop.counter%}
-        <div id = "{{forloop.counter}}">
-          <h1> {{forloop.counter}} </h1>
-          <img src = "/{{item.image}}">
-        </div>
-        {%endif%}
-        {%endfor%}
-        {%for item in texts%}
-        {%if texts|length|add:"-1" > forloop.counter%}
-        <div class = text-{{forloop.counter}}> {{item.text}} </div>
-        {%endif%}
-        {%endfor%}
-      </div>
-      <div class = "grid2">
-        {%for item in images%}
-        {%if images|length|add:"-1" <= forloop.counter%}
         <div class = "image-{{forloop.counter}}">
           <img src = "/{{item.image}}">
         </div>
         {%endif%}
         {%endfor%}
         {%for item in texts%}
+        {%if texts|length|add:"-1" > forloop.counter%}
+        <div class = text-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
+        {%endif%}
+        {%endfor%}
+      </div>
+    </div>
+    <div class = "flex">
+      <div class = "grid2">
+        {%for item in images%}
+        {%if images|length|add:"-1" <= forloop.counter%}
+        <div class = "image1-{{forloop.counter}}">
+          <img src = "/{{item.image}}">
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%for item in texts%}
         {%if texts|length|add:"-1" <= forloop.counter%}
-        <div class = text-{{forloop.counter}}> {{item.text}} </div>
+        <div class = text1-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
         {%endif%}
         {%endfor%}
       </div>
@@ -79,9 +80,124 @@
 
     .grid2 {
       background: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      margin-bottom: 18px;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 50px;
+    }
+
+    .flex {
+      width: 100%;
+      background: white;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 50px;
+      padding-bottom: 50px;
     }
 
     .grid {
       color: white;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      margin-bottom: 18px;
+      align-items: center;
+      justify-content: center;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .fotos {
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .grid img {
+      width: 100%;
+    }
+
+    .name {
+      order: -3;
+    }
+    .image-1 {
+      order: -2;
+    }
+
+    .image-2 {
+      order: -2;
+    }
+
+    .image-3 {
+      order: -2;
+    }
+
+    .image-4 {
+      order: -2;
+    }
+
+    .text-1 {
+      order: -1;
+    }
+
+
+    .text-3 {
+      order: 1;
+    }
+
+    .image-8 {
+      order: 2;
+    }
+
+    .image-9 {
+      order: 2;
+    }
+
+    .image-10 {
+      order: 2;
+    }
+
+    .text-4 {
+      order: 3;
+    }
+
+    .image-11 {
+      order: 4;
+    }
+
+    .image-12 {
+      order: 4;
+    }
+
+    .image-13 {
+      order: 4;
+    }
+
+    .image-14 {
+      order: 5;
+    }
+
+    .image-15 {
+      order: 5;
+    }
+
+    .image-4 {
+      order: 5;
+    }
+
+    .text-5 {
+      order: -1;
+    }
+
+    .grid2 img {
+      width: 100%;
+    }
+
+    .grid2 div {
+      background: white;
     }
   </style>
