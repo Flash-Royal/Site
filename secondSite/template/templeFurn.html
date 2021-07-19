@@ -37,33 +37,25 @@
     <div class = "fotos">
       <div class = "grid">
         <div class = "name"> <h1 style = "font-weight: bold;"> {{furn.name}} в стиле лофт </h1></div>
-        {%for item in images%}
-        {%if images|length|add:"-1" > forloop.counter%}
-        <div class = "image-{{forloop.counter}}">
+        {%for item in gr1Im%}
+        <div class = "image-{{item.newID}}">
           <img src = "/{{item.image}}">
         </div>
-        {%endif%}
         {%endfor%}
-        {%for item in texts%}
-        {%if texts|length|add:"-1" > forloop.counter%}
+        {%for item in gr1Text%}
         <div class = text-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
-        {%endif%}
         {%endfor%}
       </div>
     </div>
     <div class = "flex">
       <div class = "grid2">
-        {%for item in images%}
-        {%if images|length|add:"-1" <= forloop.counter%}
-        <div class = "image1-{{forloop.counter}}">
+        {%for item in gr2Im%}
+          <div class = "image1-{{item.newID}}">
           <img src = "/{{item.image}}">
         </div>
-        {%endif%}
         {%endfor%}
-        {%for item in texts%}
-        {%if texts|length|add:"-1" <= forloop.counter%}
+        {%for item in gr2Text%}
         <div class = text1-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
-        {%endif%}
         {%endfor%}
       </div>
     </div>
