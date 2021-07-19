@@ -38,24 +38,24 @@
       <div class = "grid">
         <div class = "name"> <h1 style = "font-weight: bold;"> {{furn.name}} в стиле лофт </h1></div>
         {%for item in gr1Im%}
-        <div class = "image-{{item.newID}}">
+        <div class = "image-{{item.newID}}" style = "order: {{item.newID}};">
           <img src = "/{{item.image}}">
         </div>
         {%endfor%}
         {%for item in gr1Text%}
-        <div class = text-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
+        <div class = text-{{item.newID}} style = "order: {{item.newID}};"> <h3> {{item.text}} </h3> </div>
         {%endfor%}
       </div>
     </div>
     <div class = "flex">
       <div class = "grid2">
         {%for item in gr2Im%}
-          <div class = "image1-{{item.newID}}">
+          <div class = "image1-{{item.newID}}" style = "order: {{item.newID}};">
           <img src = "/{{item.image}}">
         </div>
         {%endfor%}
         {%for item in gr2Text%}
-        <div class = text1-{{forloop.counter}}> <h3> {{item.text}} </h3> </div>
+        <div class = text1-{{item.newID}} style = "order: {{item.newID}};"> <h3> {{item.text}} </h3> </div>
         {%endfor%}
       </div>
     </div>
@@ -114,75 +114,7 @@
     }
 
     .name {
-      order: -3;
-    }
-    .image-1 {
-      order: -2;
-    }
-
-    .image-2 {
-      order: -2;
-    }
-
-    .image-3 {
-      order: -2;
-    }
-
-    .image-4 {
-      order: -2;
-    }
-
-    .text-1 {
-      order: -1;
-    }
-
-
-    .text-3 {
-      order: 1;
-    }
-
-    .image-8 {
-      order: 2;
-    }
-
-    .image-9 {
-      order: 2;
-    }
-
-    .image-10 {
-      order: 2;
-    }
-
-    .text-4 {
-      order: 3;
-    }
-
-    .image-11 {
-      order: 4;
-    }
-
-    .image-12 {
-      order: 4;
-    }
-
-    .image-13 {
-      order: 4;
-    }
-
-    .image-14 {
-      order: 5;
-    }
-
-    .image-15 {
-      order: 5;
-    }
-
-    .image-4 {
-      order: 5;
-    }
-
-    .text-5 {
-      order: -1;
+      order: 0;
     }
 
     .grid2 img {

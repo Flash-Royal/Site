@@ -6,9 +6,6 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from .models import *
 
-# def main(request):
-#     return render(request,'main.html')
-
 class Main(APIView):
     renderer_classes = [MultiPartParser,TemplateHTMLRenderer]
     template_name = 'main.html'
@@ -43,22 +40,31 @@ class FurnitureDetail(APIView):
                     grid2.append(list(mass)[i])
         return grid1, grid2
 
-    def addID(self, mass):
+    def addID(self, mass, left = 0, multi = 1):
         for id, item in enumerate(mass):
-            item.newID = id
+            item.newID = (id + left) * multi
+            print(multi, " --- ", item.newID)
 
     def get(self, request, furniture):
-        arr = []
         furns = Furniture.objects.all()
         furn = Furniture.objects.values('id','name','idName').get(idName = furniture)
         images = Images.objects.filter(nameFurniture = furn['id'])
         texts = Texts.objects.filter(nameFurniture = furn['id'])
+
         grid1Images, grid2Images = self.parseData(images)
-        self.addID(grid1Images)
-        self.addID(grid2Images)
+        self.addID(grid1Images, 1)
+        self.addID(grid2Images, 1)
+
         grid1Texts, grid2Texts = self.parseData(texts)
+        self.addID(grid1Texts, 1, len(grid1Images) // len(grid1Texts))
+        self.addID(grid2Texts, 1, len(grid2Images) // len(grid2Texts))
+
+        for i, item in enumerate(grid1Texts):
+            self.changeNewID(grid1Images, item.newID + i)
+            item.newID = item.newID + i
+
+        for i, item in enumerate(grid2Texts):
+            self.changeNewID(grid2Images, item.newID + i)
+            item.newID = item.newID + i
 
         return Response({'furns' : furns, 'furn' : furn, 'gr1Text' : grid1Texts, 'gr2Text' : grid2Texts, 'gr1Im' : grid1Images, 'gr2Im' : grid2Images})
-
-
-# Create your views here.
