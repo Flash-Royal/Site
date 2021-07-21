@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{%block genre%}
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+    {%for genre in gameGenres%}
+    {%if genre.name == genreName.name%}
+    <li class="nav-item active">
+      <a class="nav-link" href= {{genre.getLink}}> {{genre.name}} </a>
+    </li>
+    {%else%}
+    <li class="nav-item">
+      <a class="nav-link" href= {{genre.getLink}}> {{genre.name}} </a>
+    </li>
+    {% endif %}
+    {%endfor%}
+  </ul>
+</div>
+{%endblock%}
+
+{%block content%}
+<div class = "container-fluid">
+  <div>
+    <h3> {{genreName.name}} </h3>
+  </div>
+  <div>
+    <h4> {{genreName.description}} </h4>
+  </div>
+  <div>
+    <h4> Список игр: </h4>
+    {%for game in games%}
+    <div>
+      <h4> {{game.name}} </h4>
+      <h5> {{game.description}} </h5>
+      <div class = "container">
+        <div class="row justify-content-md-center">
+          {%for image in images%}
+          {%if image.imageGame == game.name%}
+          <div class = "col">
+            <img src='/{{image.image}}' class="img-circle" widtg = "300" height = "300">
+          </div>
+          {%endif%}
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{%endblock%}

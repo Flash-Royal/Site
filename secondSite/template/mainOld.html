@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Главная</title>
+  </head>
+  <body>
+    <div class = 'foto'>
+      <img class = 'background' src = "{%static 'background.jpg'%}">
+      <div class = 'menu'>
+        <nav class = "navbar navbar-dark" >
+          <a class = "navbar-brand" href = {% url 'main'%}>
+            <img src = "{%static 'logo.png'%}" width = "110" height = "68">
+          </a>
+          <div class = "social net">
+            <a href="http:\\vk.com"><img src="{%static 'vk-social-logotype.svg'%}" width = "28" height = "28"></a>
+            <a href="http:\\instagram.com"><img src="{%static 'instagram.svg'%}" width = "28" height = "28"></a>
+            <a href="http:\\youtube.com"><img src="{%static 'youtube.svg'%}" width = "28" height = "28"></a>
+          </div>
+          <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+              <ul class="navbar-nav .align-items-end mr-auto mt-2 mt-lg-0 ">
+                {%for item in furn%}
+                <li class="nav-item">
+                  <a class="nav-link" href= {{item.getLink}}> {{item.name}} </a>
+                </li>
+                {%endfor%}
+              </ul>
+          </div>
+
+        </nav>
+
+      </div>
+      <div class = 'names' style= "margin: 70px 20px;">
+        <h1 style="color:#ffffff"> Мебель лофт </h1>
+        <h5> на заказ в Нижнем Новгороде </h5>
+        <h6 class = "n1"> для дома | офиса | кафе и ресторана | улицы </h6>
+      </div>
+    </div>
+    <div class = grid-container>
+      <div class = item1>
+        <div class = 'test'> Name1 </div>
+        <img src = {%static '1.jpg'%} width = "200" height="300">
+      </div>
+      {%for item in furn%}
+      <div class = "{{item.idName}}">
+        <div class = "test"> {{item.name}} </div>
+        {%if item.idName == "svetilnik"%}
+          <img src = '/{{item.imageBack}}' width = 100% height = 100%>
+        {%else%}
+          <img src = '/{{item.imageBack}}' width = "200" height = "300">
+        {%endif%}
+        </div>
+      {%endfor%}
+      <div class = item2>
+        <div class = 'test'> Name2 </div>
+        <img src = {%static '2.jpg'%} width = 100% height="300">
+      </div>
+      <div class = item3>
+        <div class = 'test'> Name3 </div>
+        <img src = {%static '3.jpg'%} width = "400" height="300">
+      </div>
+    </div>
+  </body>
+
+  <style>
+    .background {
+      width: 100%;
+      height: 100%;
+       }
+    .foto {
+      position: relative;
+    }
+    .menu {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .names {
+      position: absolute;
+      top: 10%;
+      left: 65px;
+      color: white;
+      font: bolt 24px Helvetica;
+    }
+    .n1 {
+      margin-top: 30px;
+    }
+
+    .grid-container {
+      grid-area: auto;
+      max-width: 200;
+      max-height: 300;
+      margin: 10px auto;
+      display: grid;
+      grid-template-columns: 200px minmax(200px, 300px);
+      grid-gap: 40px;
+      grid-auto-flow: dense;
+    }
+
+    .test {
+      margin-bottom: 10px;
+    }
+
+    .svetilnik {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+
+
+  </style>
+</html>
