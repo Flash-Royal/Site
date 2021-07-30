@@ -13,7 +13,7 @@ class Furniture(models.Model):
 
     def imagesFurniture(self):
         selfFurnitures = Images.objects.filter(nameFurniture__name = self.name)
-        return ','.join([furn.image for furn in selfFurnitures])
+        return ','.join([str(furn.image) for furn in selfFurnitures])
 
     def getLink(self):
         return reverse('FurnitureDetail', args = [str(self.idName)])
