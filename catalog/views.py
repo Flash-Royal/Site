@@ -11,7 +11,7 @@ class Main(APIView):
     template_name = 'main.html'
 
     def get(self, request):
-        furnitures = Furniture.objects.all()
+        furnitures = Furniture.objects.all().exclude(idName = "review")
         return Response({'furn':furnitures})
 
 class FurnitureDetail(APIView):
