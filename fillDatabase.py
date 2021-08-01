@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import sqlite3
 
 class FurnDataBase():
@@ -17,10 +18,9 @@ class FurnDataBase():
         cur = self.conn.cursor()
         sql = "select name from catalog_furniture"
         cur.execute(sql)
-
         res = cur.fetchall()
-        for row in res:
-            if row[0] != '':
+        if res != []:
+            for row in res:
                 existingNames.append(row[0])
 
         for name in names:
@@ -52,8 +52,43 @@ class FurnDataBase():
             cur.execute(sql)
             self.conn.commit()
 
-furniture = FurnDataBase("db.sqlite3")
-furniture.addNewNames()
+class ImageDataBase():
+    def __init__(self, nameDB):
+        self.conn = sqlite3.connect(nameDB)
+
+    def findAndAddNewImages(self):
+        images = []
+        existingImages = []
+        newImages = {}
+        names = []
+        cur = self.conn.cursor()
+        sql = "select image from catalog_images"
+        cur.execute(sql)
+        res = cur.fetchall()
+        if res != []:
+            for row in res:
+                existingImages.append(row[0])
+
+        for object in os.listdir('furniture'):
+            if os.path.isdir('furniture/{}'.format(object)):
+                names.append(object)
+
+        for name in names:
+            for object in os.listdir('furniture/{}'.format(name)):
+                if os.path.isfile('furniture/{}/{}'.format(name, object)):
+                    if Path('furniture/{}/{}'.format(name, object)).suffix == '.jpg':
+                        if object not in existingImages:
+                            sql = "insert into catalog_images(nameFurniture_id, image) values((select id from catalog_furniture where name = '{0}'),'furniture/{0}/{1}')".format(name, object)
+                            cur.execute(sql)
+                            self.conn.commit()
+
+
+
+# furniture = FurnDataBase("db.sqlite3")
+# furniture.addNewNames()
+
+image = ImageDataBase("db.sqlite3")
+image.findAndAddNewImages()
 
 # names = []
 # images = {}

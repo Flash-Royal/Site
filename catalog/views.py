@@ -6,13 +6,21 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from .models import *
 
+def addID(mass, left = 0, multi = 1):
+    for id, item in enumerate(mass):
+        item.newID = (id + left) * multi
+
 class Main(APIView):
-    renderer_classes = [MultiPartParser,TemplateHTMLRenderer]
+    renderer_classes = [TemplateHTMLRenderer]
+    parser_classes = [MultiPartParser]
     template_name = 'main.html'
 
     def get(self, request):
         furnitures = Furniture.objects.all().exclude(idName = "review")
-        return Response({'furn':furnitures})
+        furn = Furniture.objects.values('id').get(idName = "review")
+        review = Images.objects.filter(nameFurniture = furn['id'])
+        addID(review)
+        return Response({'furn' : furnitures, 'review' : review})
 
 class FurnitureDetail(APIView):
     renderer_classes = [MultiPartParser, TemplateHTMLRenderer]
@@ -40,24 +48,29 @@ class FurnitureDetail(APIView):
                     grid2.append(list(mass)[i])
         return grid1, grid2
 
-    def addID(self, mass, left = 0, multi = 1):
-        for id, item in enumerate(mass):
-            item.newID = (id + left) * multi
-            print(multi, " --- ", item.newID)
-
     def get(self, request, furniture):
         furns = Furniture.objects.all()
         furn = Furniture.objects.values('id','name','idName').get(idName = furniture)
         images = Images.objects.filter(nameFurniture = furn['id'])
         texts = Texts.objects.filter(nameFurniture = furn['id'])
-
         grid1Images, grid2Images = self.parseData(images)
-        self.addID(grid1Images, 1)
-        self.addID(grid2Images, 1)
+        addID(grid1Images, 1)
+        addID(grid2Images, 1)
 
         grid1Texts, grid2Texts = self.parseData(texts)
-        self.addID(grid1Texts, 1, len(grid1Images) // len(grid1Texts))
-        self.addID(grid2Texts, 1, len(grid2Images) // len(grid2Texts))
+
+        if len(grid1Texts) == 0:
+            length1 = 2;
+        else:
+            length1 = len(grid1Texts)
+
+        if len(grid2Texts) == 0:
+            length2 = 2;
+        else:
+            length2 = len(grid2Texts)
+
+        addID(grid1Texts, 1, len(grid1Images) // length1)
+        addID(grid2Texts, 1, len(grid2Images) // length2)
 
         for i, item in enumerate(grid1Texts):
             self.changeNewID(grid1Images, item.newID + i)
