@@ -84,36 +84,8 @@ class ImageDataBase():
 
 
 
-# furniture = FurnDataBase("db.sqlite3")
-# furniture.addNewNames()
+furniture = FurnDataBase("db.sqlite3")
+furniture.addNewNames()
 
 image = ImageDataBase("db.sqlite3")
 image.findAndAddNewImages()
-
-# names = []
-# images = {}
-# for object in os.listdir('furniture'):
-#     if os.path.isdir('furniture/{}'.format(object)):
-#         names.append(object)
-#
-# print(names)
-#
-# for name in names:
-#     files = []
-#     for object in os.listdir('furniture/{}'.format(name)):
-#         if os.path.isfile('furniture/{}/{}'.format(name, object)):
-#             files.append(object)
-#     images[name] = files
-#
-# print(images)
-# conn = sqlite3.connect("db.sqlite3")
-# cur = conn.cursor()
-# sql = "Select id, name, idName, imageBack From catalog_furniture where idname = '{}'".format(name)
-# sql1 = "Select nameFurniture_id from catalog_images"
-# cur.execute(sql1)
-# res = cur.fetchall()
-# print(res[0])
-
-# sqlTest = "Insert into catalog_images(nameFurniture_id, image) values((Select id From catalog_furniture where idname = '{}'), 'furniture/Стулья/2020-10-04_19-52-20_UTC.jpg');".format(name)
-# cur.execute(sqlTest)
-# conn.commit()
