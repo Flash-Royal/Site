@@ -1,6 +1,23 @@
 import os
 from pathlib import Path
 import sqlite3
+from instaloader import Profile, Instaloader
+
+class HighlightsFromInstagram():
+    def __init__(self, email, password):
+        self.instance = Instaloader(save_metadata = False, compress_json = False)
+        self.instance.login(user = email, passwd = password)
+        self.listOfNames = []
+
+    def downloadHighlights(self, name):
+        os.chdir("furniture")
+        profile = Profile.from_username(self.instance.context, username = name)
+        for highlight in self.instance.get_highlights(user = profile):
+            self.listOfNames.append(highlight.title)
+            for id, object in enumerate(highlight.get_items()):
+                self.instance.download_storyitem(object, '{}'.format(highlight.title))
+        os.chdir("..")
+
 
 class FurnDataBase():
     def __init__(self, nameDB):
@@ -32,8 +49,8 @@ class FurnDataBase():
     def createNewIdName(self):
         names = self.findNewNames()
         idNames = {}
-
-        print("Enter idNames for new names")
+        if names != []:
+            print("Enter idNames for new names")
         for name in names:
             idNames[name] = str(input("{}: ".format(name)))
 
@@ -82,7 +99,8 @@ class ImageDataBase():
                             cur.execute(sql)
                             self.conn.commit()
 
-
+inst = HighlightsFromInstagram(email = "vlad.popov471@gmail.com", password = "python1")
+inst.downloadHighlights("romanov_steel_and_wood")
 
 furniture = FurnDataBase("db.sqlite3")
 furniture.addNewNames()

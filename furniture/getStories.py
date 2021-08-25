@@ -9,6 +9,7 @@ class HighlightsFromInstagram():
         self.listOfNames = []
 
     def downloadHighlights(self, name):
+        os.chdir("test")
         profile = Profile.from_username(self.instance.context, username = name)
         for highlight in self.instance.get_highlights(user = profile):
             self.listOfNames.append(highlight.title)
